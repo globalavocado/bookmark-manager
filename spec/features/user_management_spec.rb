@@ -33,13 +33,10 @@ feature "user is sent a new password" do
 			visit '/sessions/forgotten'
 			expect(page).to have_content("forgotten password? please enter your email")
 			click_button "submit"
-			expect(current_path).to eq('/sessions/new')
+			expect(current_path).to eq('/sessions/reset_password')
 			expect(page).to have_content("please check your email, a reset link has been sent to you.")
 		end
 
-		# scenario "the password gets changed" do
-		# 	visit ''
-		# end
 end
 
 
