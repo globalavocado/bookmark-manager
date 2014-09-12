@@ -43,4 +43,3 @@ feature 'User signs out' do
 	end
 
 end
-
