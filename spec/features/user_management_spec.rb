@@ -36,6 +36,10 @@ feature "user is sent a new password" do
 			expect(current_path).to eq('/sessions/new')
 			expect(page).to have_content("please check your email, a reset link has been sent to you.")
 		end
+
+		# scenario "the password gets changed" do
+		# 	visit ''
+		# end
 end
 
 
