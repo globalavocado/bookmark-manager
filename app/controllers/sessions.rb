@@ -14,7 +14,6 @@
 			erb :"sessions/new"
 
 		# else
-
 		# 	flash[:notice] = ["a reset link has been emailed to you."]
 			
 		end
@@ -26,11 +25,14 @@
 		redirect to('/')
 	end
 
-	post '/sessions/forgotten' do
-		# email = params[:email]
+	get '/sessions/forgotten' do
+		email = params[:email]
 		erb :"sessions/forgotten"
 	end
 
-	# post '/sessions/forgotten' do
-
-	# end
+	post '/sessions/forgotten' do
+		email = params[:email]
+		erb :"sessions/new"
+		flash[:notice] = ["please check your email, a reset link has been sent to you."]	
+		redirect to('/sessions/new')
+	end

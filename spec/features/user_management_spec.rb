@@ -23,18 +23,19 @@ feature "User signs up" do
 
 end
 
-# feature "user requests new password" do
+feature "user is sent a new password" do
 
-# 		before(:each) do
-# 			User.create(:email => "test@test.com")
-# 		end
+		before(:each) do
+			User.create(:email => "test@test.com")
+		end
 
-# 		scenario "when they ask for a new password" do
-# 			expect(current_path).to eq('/sessions/forgotten_password')
-# 			expect(page).to have_content("forgotten password?")
-# 			click_button "submit"
-# 			expect(page).to have_content("a reset link has been emailed to you.")
-# 		end
-# end
+		scenario "when they ask for a new password" do
+			visit '/sessions/forgotten'
+			expect(page).to have_content("forgotten password? please enter your email")
+			click_button "submit"
+			expect(current_path).to eq('/sessions/new')
+			expect(page).to have_content("please check your email, a reset link has been sent to you.")
+		end
+end
 
 
