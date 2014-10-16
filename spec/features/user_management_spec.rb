@@ -5,7 +5,9 @@ require_relative 'helper/session'
 
 feature "User signs up" do
 
-
+		before(:each) do
+		User.create(:email => 'alice@example.com')
+		end
 		scenario "when being logged out" do
 				expect { sign_up }.to change(User, :count).by(1)
 				expect(page).to have_content("Welcome, alice@example.com")
@@ -34,7 +36,7 @@ feature "user is sent a new password" do
 
 		scenario "when they ask for a new password" do
 			visit '/sessions/forgotten'
-			expect(page).to have_content("forgotten password? please enter your email")
+			expect(page).to have_content("Forgotten password? please enter your email")
 			click_button "submit"
 			expect(current_path).to eq('/sessions/reset_password')
 			expect(page).to have_content("please check your email, a reset link has been sent to you.")
